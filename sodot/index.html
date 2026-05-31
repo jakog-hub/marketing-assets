@@ -1,0 +1,2697 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סודות התקשור והאנרגיה של שמאנים | ג'קו גולדברג</title>
+<meta name="description" content="סדנא אינטרנטית של 4 מפגשי live - איך כל אחד יכול תוך 10 דק׳ בלבד להתחבר לאינטואיציה ולתקשר עם נשמות">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #faf7f2;
+  --bg-elevated: #ffffff;
+  --bg-warm: #fdf9f6;
+  --bg-terra-soft: #faf3ee;
+  --bg-terra-light: #f5e8de;
+  --text-primary: #2c1810;
+  --text-secondary: #5a3a28;
+  --text-muted: #9b7355;
+  --accent-gold: #c69c5c;
+  --accent-gold-deep: #a07a3a;
+  --accent-gold-light: #e8c47a;
+  --accent-terra: #c4622d;
+  --accent-terra-hover: #a84e22;
+  --accent-green: #4a7c43;
+  --border-soft: rgba(196, 98, 45, 0.15);
+  --border-gold: rgba(198, 156, 92, 0.3);
+  --shadow-soft: rgba(45, 24, 16, 0.08);
+  --shadow-medium: rgba(45, 24, 16, 0.15);
+  --shadow-gold: rgba(198, 156, 92, 0.25);
+  --shadow-terra: rgba(196, 98, 45, 0.2);
+  --gradient-gold: linear-gradient(135deg, #c69c5c 0%, #e8c47a 50%, #c69c5c 100%);
+  --gradient-terra: linear-gradient(135deg, #c4622d 0%, #d97a47 100%);
+  --gradient-warm: linear-gradient(180deg, #fdf9f6 0%, #faf3ee 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px;
+}
+
+body {
+  font-family: 'Heebo', 'Assistant', Arial, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 17px;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========== UTILITY CLASSES =========== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container-narrow {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: clamp(60px, 8vw, 100px) 0;
+  position: relative;
+}
+
+.section-tight {
+  padding: clamp(40px, 6vw, 70px) 0;
+}
+
+/* =========== ANIMATIONS =========== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes goldGlow {
+  0%, 100% { box-shadow: 0 0 30px var(--shadow-gold), 0 8px 30px var(--shadow-medium); }
+  50% { box-shadow: 0 0 50px var(--shadow-gold), 0 12px 40px var(--shadow-medium); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes drawLine {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.15s; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.25s; }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.35s; }
+.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.45s; }
+.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.55s; }
+
+/* =========== AMBIENT GLOW BG =========== */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.ambient-glow.gold {
+  background: radial-gradient(ellipse, rgba(198, 156, 92, 0.25) 0%, transparent 60%);
+}
+
+.ambient-glow.terra {
+  background: radial-gradient(ellipse, rgba(196, 98, 45, 0.18) 0%, transparent 60%);
+}
+
+/* =========== PRE-HEADER STRIP =========== */
+.pre-header {
+  background: linear-gradient(135deg, #2c1810 0%, #5a3a28 100%);
+  color: #faf7f2;
+  padding: 14px 24px;
+  text-align: center;
+  font-size: clamp(13px, 1.8vw, 15px);
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.pre-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(198, 156, 92, 0.15), transparent);
+  animation: shimmer 6s linear infinite;
+  background-size: 200% 100%;
+}
+
+.pre-header-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pre-header strong {
+  color: var(--accent-gold-light);
+  font-weight: 700;
+}
+
+/* =========== HERO =========== */
+.hero {
+  background: linear-gradient(180deg, #fdf9f6 0%, #faf3ee 100%);
+  padding: clamp(40px, 6vw, 80px) 0 clamp(40px, 6vw, 80px);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-tagline {
+  display: inline-block;
+  color: var(--accent-terra);
+  font-weight: 700;
+  font-size: clamp(14px, 2vw, 17px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.hero-tagline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 60px;
+  height: 2px;
+  background: var(--gradient-gold);
+}
+
+.hero h1 {
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 .highlight {
+  color: var(--accent-terra);
+  position: relative;
+}
+
+.hero-image-wrap {
+  margin: 40px auto;
+  max-width: 900px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px var(--shadow-medium), 0 0 40px var(--shadow-gold);
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #2c1810, #5a3a28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  font-size: 18px;
+}
+
+.hero-image-wrap::after {
+  content: '🔥 כאן תיכנס תמונת קבוצה במעגל';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #3d1f0d 0%, #6b3a1f 50%, #3d1f0d 100%);
+  color: rgba(232, 196, 122, 0.7);
+  font-size: clamp(14px, 2vw, 20px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* =========== SECTION HEADINGS =========== */
+.section-eyebrow {
+  display: inline-block;
+  color: var(--accent-terra);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent-gold);
+}
+
+.section-title {
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.section-title .highlight {
+  color: var(--accent-terra);
+}
+
+.section-subtitle {
+  font-size: clamp(17px, 2vw, 20px);
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+/* =========== PROBLEM BULLETS =========== */
+.problem-section {
+  background: var(--bg-elevated);
+  position: relative;
+}
+
+.problem-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.problem-item {
+  background: var(--bg-warm);
+  padding: 24px 28px;
+  border-radius: 16px;
+  border-right: 4px solid var(--accent-terra);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px var(--shadow-soft);
+}
+
+.problem-item:hover {
+  transform: translateX(-8px);
+  box-shadow: 0 8px 30px var(--shadow-medium), -4px 0 20px var(--shadow-terra);
+}
+
+.problem-icon {
+  color: var(--accent-terra);
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1;
+  font-weight: 900;
+}
+
+/* =========== FLOWING TEXT (Pain Validation) =========== */
+.flowing-section {
+  background: var(--bg-primary);
+  text-align: center;
+}
+
+.flowing-text {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: clamp(17px, 2.2vw, 22px);
+  line-height: 1.9;
+  color: var(--text-secondary);
+}
+
+.flowing-text p {
+  margin-bottom: 16px;
+}
+
+.flowing-punch {
+  margin-top: 50px;
+  padding: 40px 30px;
+  background: var(--bg-elevated);
+  border-radius: 20px;
+  border: 2px solid var(--border-gold);
+  box-shadow: 0 20px 50px var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,0.9);
+  font-size: clamp(20px, 2.8vw, 28px);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.flowing-punch::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gradient-gold);
+  border-radius: 2px;
+}
+
+.huge-text {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin: 40px 0;
+  letter-spacing: -0.01em;
+}
+
+.huge-text .accent {
+  color: var(--accent-terra);
+}
+
+/* =========== MINI AUTHORITY =========== */
+.mini-authority {
+  background: var(--bg-warm);
+  text-align: center;
+}
+
+.author-photo-wrap {
+  display: inline-block;
+  max-width: 320px;
+  margin: 30px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 4px solid var(--bg-elevated);
+  box-shadow: 0 20px 50px var(--shadow-medium), 0 0 40px var(--shadow-gold), 0 0 0 2px var(--accent-gold);
+  position: relative;
+  transition: transform 0.5s;
+}
+
+.author-photo-wrap:hover {
+  transform: scale(1.03);
+}
+
+.author-photo-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mini-author-text {
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* =========== SOCIAL PROOF COLLAGE =========== */
+.social-proof-collage {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px var(--shadow-medium), 0 0 40px var(--shadow-gold);
+  position: relative;
+  border: 3px solid var(--border-gold);
+  overflow: hidden;
+  transition: transform 0.5s;
+}
+
+.social-proof-collage:hover {
+  transform: scale(1.02);
+}
+
+.social-proof-collage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========== PAIN DEEPENING =========== */
+.pain-deepening {
+  background: linear-gradient(180deg, #2c1810 0%, #3d1f0d 100%);
+  color: #f5e6d3;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pain-deepening .ambient-glow.gold {
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+.pain-deepening h2 {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800;
+  margin-bottom: 30px;
+  color: #faf7f2;
+  position: relative;
+  z-index: 1;
+}
+
+.pain-deepening h2 strong {
+  color: var(--accent-gold-light);
+}
+
+.pain-deepening .flowing-text {
+  color: rgba(245, 230, 211, 0.85);
+  position: relative;
+  z-index: 1;
+}
+
+.pain-deepening .flowing-text strong {
+  color: var(--accent-gold-light);
+  font-weight: 700;
+}
+
+/* =========== SOLUTION INTRO =========== */
+.solution-intro {
+  background: var(--bg-elevated);
+  text-align: center;
+}
+
+.solution-name-box {
+  display: inline-block;
+  margin: 30px 0;
+  padding: 32px 48px;
+  background: linear-gradient(135deg, #fdf9f6, #faf3ee);
+  border-radius: 20px;
+  border: 3px solid var(--accent-gold);
+  box-shadow: 0 20px 50px var(--shadow-medium), 0 0 40px var(--shadow-gold);
+  position: relative;
+}
+
+.solution-name-box h2 {
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.solution-name-box p {
+  font-size: clamp(36px, 6vw, 60px);
+  color: var(--accent-terra);
+  margin-top: 8px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.solution-promises {
+  margin-top: 50px;
+  font-size: clamp(18px, 2.4vw, 24px);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 50px auto 0;
+}
+
+.solution-promises p {
+  margin-bottom: 18px;
+}
+
+/* =========== PRODUCT REVEAL =========== */
+.product-reveal {
+  background: linear-gradient(180deg, #fdf9f6 0%, #f5e8de 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-mockup {
+  max-width: 800px;
+  margin: 40px auto;
+  border-radius: 24px;
+  position: relative;
+  filter: drop-shadow(0 30px 60px rgba(45, 24, 16, 0.25)) drop-shadow(0 0 60px rgba(198, 156, 92, 0.3));
+  overflow: visible;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.product-mockup:hover {
+  transform: scale(1.03);
+}
+
+.product-mockup img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.product-name {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900;
+  color: var(--text-primary);
+  margin: 30px 0 15px;
+  letter-spacing: -0.01em;
+}
+
+.product-subtitle {
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =========== MEETING CARDS =========== */
+.meetings-section {
+  background: var(--bg-primary);
+}
+
+.meetings-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.meeting-card {
+  background: var(--bg-elevated);
+  border-radius: 24px;
+  padding: clamp(28px, 4vw, 50px);
+  margin-bottom: 30px;
+  box-shadow: 0 15px 40px var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.meeting-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px var(--shadow-medium), 0 0 40px var(--shadow-gold);
+}
+
+.meeting-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 100%;
+  background: var(--gradient-gold);
+}
+
+.meeting-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.meeting-fire {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.meeting-number {
+  font-size: clamp(20px, 2.8vw, 26px);
+  font-weight: 900;
+  color: var(--accent-terra);
+}
+
+.meeting-title {
+  font-size: clamp(22px, 3.2vw, 32px);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.meeting-subtitle {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--accent-terra);
+  font-weight: 600;
+  font-style: italic;
+}
+
+.meeting-content {
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+.meeting-content p {
+  margin-bottom: 16px;
+}
+
+.meeting-content strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.bullet-list {
+  list-style: none;
+  margin: 20px 0;
+}
+
+.bullet-list li {
+  padding: 10px 0 10px 0;
+  padding-right: 32px;
+  position: relative;
+  color: var(--text-secondary);
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.6;
+}
+
+.bullet-list li::before {
+  content: '✦';
+  position: absolute;
+  right: 0;
+  top: 10px;
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.bullet-list li strong {
+  color: var(--text-primary);
+}
+
+.qmark-list li::before {
+  content: '🤔';
+  font-size: 18px;
+  top: 8px;
+}
+
+.checkmark-list li::before {
+  content: '✅';
+  font-size: 16px;
+  top: 12px;
+  color: var(--accent-green);
+}
+
+.x-list li::before {
+  content: '❌';
+  font-size: 16px;
+  top: 12px;
+}
+
+.warning-box {
+  background: var(--bg-terra-light);
+  padding: 20px 24px;
+  border-radius: 14px;
+  margin: 20px 0;
+  border-right: 4px solid var(--accent-terra);
+  color: var(--text-primary);
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.6;
+}
+
+.warning-box strong {
+  display: block;
+  color: var(--accent-terra);
+  margin-bottom: 6px;
+  font-weight: 800;
+}
+
+.shine-line {
+  margin: 30px 0;
+  padding: 20px 28px;
+  background: linear-gradient(135deg, #fdf9f6, #faf3ee);
+  border-radius: 14px;
+  border: 1px solid var(--border-gold);
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.shine-line::before {
+  content: '✨ ';
+}
+
+.date-tag {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 18px;
+  background: var(--bg-terra-light);
+  color: var(--accent-terra);
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =========== TESTIMONIALS WITH PHOTOS =========== */
+.testimonials-photos {
+  background: var(--bg-warm);
+  position: relative;
+}
+
+.testimonials-photos-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.testimonials-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: var(--bg-elevated);
+  border-radius: 20px;
+  padding: 36px 28px;
+  box-shadow: 0 10px 30px var(--shadow-soft);
+  text-align: center;
+  border: 1px solid var(--border-soft);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px var(--shadow-medium), 0 0 30px var(--shadow-gold);
+  border-color: var(--accent-gold);
+}
+
+.testimonial-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  border: 4px solid var(--bg-elevated);
+  box-shadow: 0 8px 20px var(--shadow-medium), 0 0 0 3px var(--accent-gold);
+  overflow: hidden;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.testimonial-card:hover .testimonial-photo {
+  transform: scale(1.08);
+}
+
+.testimonial-title {
+  font-size: clamp(17px, 2vw, 20px);
+  font-weight: 800;
+  color: var(--accent-terra);
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.testimonial-quote {
+  font-size: clamp(14px, 1.6vw, 16px);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.testimonial-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  border-top: 2px solid var(--border-gold);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+/* =========== PRICING EMOTIONAL =========== */
+.pricing-emotional {
+  background: linear-gradient(180deg, #2c1810 0%, #3d1f0d 100%);
+  color: #f5e6d3;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-emotional .ambient-glow.gold {
+  width: 500px;
+  height: 500px;
+  top: 20%;
+  right: 10%;
+  opacity: 0.4;
+}
+
+.pricing-emotional h2 {
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 800;
+  color: #faf7f2;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.pricing-emotional .bullet-list {
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: right;
+  position: relative;
+  z-index: 1;
+}
+
+.pricing-emotional .bullet-list li {
+  color: rgba(245, 230, 211, 0.9);
+  font-size: clamp(16px, 2vw, 19px);
+}
+
+.pricing-emotional .bullet-list li::before {
+  color: var(--accent-gold-light);
+}
+
+.pricing-emotional .bullet-list li strong {
+  color: var(--accent-gold-light);
+}
+
+.real-price-text {
+  margin-top: 50px;
+  font-size: clamp(20px, 2.8vw, 30px);
+  font-weight: 800;
+  color: var(--accent-gold-light);
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+}
+
+/* =========== PRICE BOX =========== */
+.price-section {
+  background: var(--bg-elevated);
+  text-align: center;
+}
+
+.price-box {
+  background: linear-gradient(135deg, #fdf9f6, #faf3ee);
+  border-radius: 30px;
+  padding: clamp(40px, 5vw, 60px);
+  margin: 0 auto;
+  max-width: 720px;
+  border: 3px solid var(--accent-gold);
+  box-shadow: 0 30px 70px var(--shadow-medium), 0 0 60px var(--shadow-gold);
+  position: relative;
+}
+
+.price-question {
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.price-huge {
+  font-size: clamp(50px, 9vw, 90px);
+  font-weight: 900;
+  color: var(--accent-terra);
+  line-height: 1;
+  margin: 20px 0;
+  text-shadow: 0 4px 20px var(--shadow-terra);
+  letter-spacing: -0.02em;
+}
+
+.price-huge .currency {
+  font-size: 0.7em;
+}
+
+.price-detail {
+  font-size: clamp(18px, 2.2vw, 22px);
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.steps-list {
+  text-align: right;
+  max-width: 450px;
+  margin: 30px auto;
+}
+
+.steps-list .bullet-list li {
+  padding: 8px 32px 8px 0;
+  font-size: clamp(15px, 1.8vw, 17px);
+}
+
+.steps-promise {
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 30px 0;
+  padding: 16px;
+  background: var(--bg-terra-light);
+  border-radius: 12px;
+}
+
+/* =========== FORM SECTION =========== */
+.form-wrapper {
+  background: var(--bg-elevated);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px auto;
+  max-width: 600px;
+  box-shadow: 0 10px 30px var(--shadow-soft);
+  border: 2px solid var(--border-gold);
+  min-height: 250px;
+  text-align: center;
+}
+
+.form-placeholder-note {
+  background: linear-gradient(135deg, #f5e8de, #fdf9f6);
+  padding: 20px;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.form-placeholder-note strong {
+  color: var(--accent-terra);
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--gradient-terra);
+  color: white;
+  font-size: clamp(18px, 2.4vw, 24px);
+  font-weight: 800;
+  padding: 22px 60px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 15px 40px var(--shadow-terra), 0 5px 15px var(--shadow-medium);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  margin: 30px 0;
+  text-align: center;
+  animation: goldGlow 3s ease-in-out infinite;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 50px var(--shadow-terra), 0 8px 20px var(--shadow-medium);
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -100%;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: rotate(35deg);
+  transition: right 0.7s;
+}
+
+.cta-button:hover::before {
+  right: 200%;
+}
+
+.guarantee-note {
+  font-size: clamp(13px, 1.6vw, 15px);
+  color: var(--text-muted);
+  margin-top: 16px;
+  font-style: italic;
+}
+
+/* =========== GUARANTEE SECTION =========== */
+.guarantee-section {
+  background: linear-gradient(180deg, #fdf9f6 0%, #f5e8de 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.guarantee-shield {
+  font-size: 60px;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.guarantee-box {
+  background: var(--bg-elevated);
+  border-radius: 24px;
+  padding: clamp(40px, 5vw, 60px);
+  max-width: 780px;
+  margin: 30px auto;
+  box-shadow: 0 25px 60px var(--shadow-medium), inset 0 1px 0 rgba(255,255,255,0.9);
+  border: 2px solid var(--border-gold);
+  text-align: right;
+}
+
+.guarantee-quote {
+  font-size: clamp(17px, 2.2vw, 22px);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.guarantee-quote strong {
+  color: var(--text-primary);
+  font-weight: 800;
+  font-style: normal;
+}
+
+.guarantee-punch {
+  text-align: center;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  color: var(--accent-terra);
+  margin: 30px 0;
+  line-height: 1.3;
+}
+
+.guarantee-final {
+  background: var(--bg-terra-light);
+  padding: 30px;
+  border-radius: 16px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.guarantee-final p {
+  font-size: clamp(18px, 2.4vw, 24px);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.guarantee-final .big-number {
+  font-size: clamp(36px, 5vw, 54px);
+  font-weight: 900;
+  color: var(--accent-terra);
+  display: block;
+  margin: 10px 0;
+}
+
+/* =========== AUTHORITY FULL =========== */
+.authority-section {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.authority-section .ambient-glow.gold {
+  width: 500px;
+  height: 500px;
+  top: 30%;
+  left: -100px;
+  opacity: 0.3;
+}
+
+.authority-intro {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 50px;
+  font-size: clamp(18px, 2.2vw, 22px);
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.authority-intro strong {
+  color: var(--text-primary);
+}
+
+.authority-name-block {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.authority-name {
+  font-size: clamp(28px, 4.5vw, 42px);
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  letter-spacing: -0.01em;
+}
+
+.authority-title {
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: var(--accent-terra);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.gold-line {
+  width: 120px;
+  height: 3px;
+  background: var(--gradient-gold);
+  margin: 30px auto;
+  border-radius: 2px;
+  box-shadow: 0 0 15px var(--shadow-gold);
+}
+
+.authority-block {
+  background: var(--bg-elevated);
+  border-radius: 20px;
+  padding: clamp(30px, 4vw, 45px);
+  margin: 30px auto;
+  max-width: 850px;
+  box-shadow: 0 15px 40px var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+  position: relative;
+}
+
+.authority-block h3 {
+  font-size: clamp(20px, 2.6vw, 26px);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.authority-block p {
+  font-size: clamp(16px, 1.9vw, 18px);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+.authority-block strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.authority-block em {
+  color: var(--text-muted);
+}
+
+.authority-emphasis {
+  text-align: center;
+  font-size: clamp(20px, 2.6vw, 26px);
+  font-weight: 800;
+  color: var(--accent-terra);
+  margin: 30px 0;
+  line-height: 1.4;
+}
+
+/* =========== TESTIMONIALS NO PHOTOS =========== */
+.testimonials-text-section {
+  background: var(--bg-warm);
+}
+
+.testimonials-text-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonial-text-card {
+  background: var(--bg-elevated);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+  transition: all 0.3s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-text-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px var(--shadow-medium);
+  border-color: var(--border-gold);
+}
+
+.testimonial-text-card::before {
+  content: '"';
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 60px;
+  color: var(--accent-gold);
+  opacity: 0.25;
+  line-height: 1;
+  font-family: serif;
+  font-weight: 900;
+}
+
+.testimonial-text-quote {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.testimonial-text-author {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding-top: 14px;
+  border-top: 1px solid var(--border-gold);
+}
+
+/* =========== FAQ =========== */
+.faq-section {
+  background: var(--bg-elevated);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--bg-warm);
+  border-radius: 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.faq-item.open {
+  box-shadow: 0 10px 30px var(--shadow-soft);
+  border-color: var(--accent-gold);
+}
+
+.faq-question {
+  padding: 24px 30px;
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 700;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  line-height: 1.4;
+  user-select: none;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: right;
+  font-family: inherit;
+}
+
+.faq-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--gradient-gold);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 18px;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--gradient-terra);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.open .faq-answer {
+  max-height: 800px;
+}
+
+.faq-answer-inner {
+  padding: 0 30px 28px 30px;
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+.faq-answer-inner p {
+  margin-bottom: 10px;
+  padding-right: 26px;
+  position: relative;
+}
+
+.faq-answer-inner p::before {
+  content: '✦';
+  position: absolute;
+  right: 0;
+  top: 1px;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.faq-answer-inner strong {
+  color: var(--text-primary);
+}
+
+/* =========== FOOTER =========== */
+.footer {
+  background: linear-gradient(135deg, #2c1810, #3d1f0d);
+  color: rgba(245, 230, 211, 0.7);
+  padding: 60px 0 40px;
+  text-align: center;
+}
+
+.footer-name {
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 900;
+  color: var(--accent-gold-light);
+  margin-bottom: 8px;
+}
+
+.footer-title {
+  color: rgba(245, 230, 211, 0.6);
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: rgba(245, 230, 211, 0.4);
+  margin-top: 20px;
+}
+
+/* =========== RESPONSIVE =========== */
+/* ============ MOBILE/TABLET ============ */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  .container, .container-narrow {
+    padding: 0 18px;
+  }
+
+  .section {
+    padding: 50px 0;
+  }
+
+  .section-tight {
+    padding: 35px 0;
+  }
+
+  /* Pre-header */
+  .pre-header {
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 35px 0 25px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 br {
+    display: none;
+  }
+
+  .hero-tagline {
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+  }
+
+  /* Problem list */
+  .problem-item {
+    padding: 18px 20px;
+    font-size: 16px;
+    gap: 12px;
+  }
+
+  .problem-item:hover {
+    transform: none;
+  }
+
+  /* Flowing text */
+  .flowing-text {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .flowing-punch {
+    padding: 28px 22px;
+    font-size: 18px;
+  }
+
+  .huge-text {
+    font-size: 28px;
+    margin: 30px 0;
+  }
+
+  /* Mini Authority */
+  .author-photo-wrap {
+    max-width: 240px;
+  }
+
+  .mini-author-text {
+    font-size: 16px;
+  }
+
+  /* Pain deepening */
+  .pain-deepening h2 {
+    font-size: 24px;
+  }
+
+  /* Solution intro */
+  .solution-name-box {
+    padding: 24px 28px;
+  }
+
+  .solution-name-box h2 {
+    font-size: 17px;
+  }
+
+  .solution-name-box p {
+    font-size: 38px;
+    line-height: 1.15;
+  }
+
+  .solution-promises {
+    font-size: 18px;
+  }
+
+  /* Product reveal */
+  .product-name {
+    font-size: 30px;
+  }
+
+  /* Meeting cards */
+  .meeting-card {
+    padding: 24px 20px;
+  }
+
+  .meeting-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .meeting-fire {
+    font-size: 28px;
+  }
+
+  .meeting-number {
+    font-size: 18px;
+  }
+
+  .meeting-title {
+    font-size: 20px;
+    line-height: 1.35;
+  }
+
+  .meeting-content {
+    font-size: 16px;
+  }
+
+  .bullet-list li {
+    font-size: 15px;
+    padding-right: 28px;
+  }
+
+  .shine-line {
+    padding: 16px 20px;
+    font-size: 17px;
+  }
+
+  /* Testimonials with photos */
+  .testimonials-photos-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .testimonial-card {
+    padding: 28px 22px;
+  }
+
+  .testimonial-photo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .testimonial-title {
+    font-size: 17px;
+  }
+
+  /* Pricing emotional */
+  .pricing-emotional h2 {
+    font-size: 24px;
+  }
+
+  .real-price-text {
+    font-size: 22px;
+    margin-top: 30px;
+  }
+
+  /* Price box */
+  .price-box {
+    padding: 30px 22px;
+  }
+
+  .price-question {
+    font-size: 18px;
+  }
+
+  .price-huge {
+    font-size: 64px;
+  }
+
+  .price-detail {
+    font-size: 17px;
+  }
+
+  .steps-list .bullet-list li {
+    padding: 7px 28px 7px 0;
+    font-size: 15px;
+  }
+
+  .steps-promise {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  /* Form wrapper */
+  .form-wrapper {
+    padding: 20px;
+  }
+
+  /* Guarantee */
+  .guarantee-box {
+    padding: 30px 22px;
+  }
+
+  .guarantee-quote {
+    font-size: 16px;
+  }
+
+  .guarantee-punch {
+    font-size: 26px;
+    margin: 24px 0;
+  }
+
+  /* Authority */
+  .authority-block {
+    padding: 28px 22px;
+  }
+
+  .authority-block h3 {
+    font-size: 19px;
+  }
+
+  .authority-block p {
+    font-size: 16px;
+  }
+
+  .authority-name {
+    font-size: 28px;
+  }
+
+  .authority-title {
+    font-size: 18px;
+  }
+
+  /* Testimonials text */
+  .testimonials-text-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .testimonial-text-card {
+    padding: 24px 22px;
+  }
+
+  /* FAQ */
+  .faq-question {
+    padding: 20px 22px;
+    font-size: 16px;
+    gap: 12px;
+  }
+
+  .faq-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 16px;
+  }
+
+  .faq-answer-inner {
+    padding: 0 22px 24px 22px;
+    font-size: 15px;
+  }
+
+  /* CTA */
+  .cta-button {
+    width: 100%;
+    padding: 20px 28px;
+    font-size: 18px;
+  }
+
+  /* Disable parallax on mobile for performance */
+  .ambient-glow {
+    transform: none !important;
+  }
+
+  /* Disable hover transforms on mobile */
+  .meeting-card:hover,
+  .testimonial-card:hover,
+  .testimonial-text-card:hover,
+  .author-photo-wrap:hover,
+  .social-proof-collage:hover,
+  .product-mockup:hover,
+  .testimonial-card:hover .testimonial-photo {
+    transform: none;
+  }
+}
+
+/* ============ SMALL PHONES ============ */
+@media (max-width: 480px) {
+  .container, .container-narrow {
+    padding: 0 14px;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .hero h1 {
+    font-size: 23px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .huge-text {
+    font-size: 24px;
+  }
+
+  .solution-name-box p {
+    font-size: 32px;
+  }
+
+  .product-name {
+    font-size: 26px;
+  }
+
+  .meeting-title {
+    font-size: 18px;
+  }
+
+  .price-huge {
+    font-size: 54px;
+  }
+
+  .guarantee-punch {
+    font-size: 22px;
+  }
+
+  .authority-name {
+    font-size: 24px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================= -->
+<!-- SECTION 1: PRE-HEADER STRIP -->
+<!-- ============================= -->
+<div class="pre-header">
+  <div class="pre-header-content">
+    השמאן הישראלי שהעביר ל-<strong>17,583 אנשים</strong> סדנאות ריפוי ותקשור בארץ ובעולם
+  </div>
+</div>
+
+<!-- ============================= -->
+<!-- SECTION 2: HERO -->
+<!-- ============================= -->
+<section class="hero">
+  <div class="ambient-glow gold" style="width: 700px; height: 700px; top: -200px; left: -200px;"></div>
+  <div class="ambient-glow terra" style="width: 500px; height: 500px; bottom: -100px; right: -100px;"></div>
+
+  <div class="container reveal">
+    <div style="text-align: center;">
+      <span class="hero-tagline">מציג לראשונה בישראל • סדנה אינטרנטית של 4 מפגשי live</span>
+    </div>
+
+    <h1>
+      איך כל אחד יכול תוך <span class="highlight">10 דק׳ בלבד</span> להתחבר לאינטואיציה,<br>
+      לתקשר עם נשמות, לקבל הדרכה רוחנית ולחזור לשקט נפשי<br>
+      בעזרת <span class="highlight">שיטה שמאנית עתיקה</span>
+    </h1>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 3: PROBLEM SETUP -->
+<!-- ============================= -->
+<section class="section problem-section">
+  <div class="container">
+    <div class="reveal" style="text-align: center;">
+      <h2 class="section-title">אם הגעת עד לכאן, סימן ש...</h2>
+    </div>
+
+    <ul class="problem-list reveal-stagger">
+      <li class="problem-item">
+        <span class="problem-icon">?</span>
+        <span>אתה עדיין <strong>מהסס ומתבלבל</strong> לפני החלטות חשובות ולא סגור מה לעשות ולמי להקשיב?</span>
+      </li>
+      <li class="problem-item">
+        <span class="problem-icon">?</span>
+        <span>שוב <strong>לא הקשבת לקול הפנימי שלך</strong> ובגדת בעצמך?</span>
+      </li>
+      <li class="problem-item">
+        <span class="problem-icon">?</span>
+        <span>אולי אפילו נכנסת ל<strong>מערכת יחסים בעייתית ורעילה</strong>, למרות כל הנורות האדומות?</span>
+      </li>
+      <li class="problem-item">
+        <span class="problem-icon">?</span>
+        <span>ולפעמים יש לך הרגשה ש<strong>אתה חי חיים שלא שייכים לך</strong> ומבזבז את הפוטנציאל הגדול שלך, שמנוהל ע״י אנשים אחרים ואלגוריתמים?</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 4: PAIN VALIDATION + PROMISE -->
+<!-- ============================= -->
+<section class="section flowing-section">
+  <div class="container-narrow reveal">
+    <div class="flowing-text">
+      <p>יכול להיות שכבר עשית מדיטציות</p>
+      <p>והתחלת לחקור את עולם התקשור עם עולם הנסתר</p>
+      <p>כדי להתחבר להדרכה רוחנית</p>
+      <p>ואתה אפילו עוקב אחרי כמה מורים רוחניים גדולים בעולם</p>
+      <p><strong>אבל לא באמת הבנת עד הסוף</strong></p>
+      <p>איך ליישם את הפרקטיקה בחיים שלך</p>
+      <p>ואתה יודע שרק אם תמצא את האינטואיציה החזקה שלך ותקשיב לה</p>
+    </div>
+
+    <div class="huge-text">
+      אז <span class="accent">הכל יסתדר לך בחיים!</span>
+    </div>
+
+    <div class="flowing-punch">
+      <p style="margin-bottom: 16px;">אז שתדע ש<strong>זה לא באשמתך.</strong></p>
+      <p>עד סוף הדף הקצר הזה אתה הולך לגלות את הסיבה האמיתית שבגללה אתה חווה קשיים אלה בחיים שלך - והפתרון?</p>
+      <p style="color: var(--accent-terra); margin-top: 20px;">עומד להפיל לך את הלסת מהרצפה...</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 5: MINI AUTHORITY INTRO -->
+<!-- ============================= -->
+<section class="section mini-authority">
+  <div class="container reveal">
+    <p style="font-size: 18px; color: var(--text-muted); font-style: italic; margin-bottom: 20px;">אבל רגע לפני זה -</p>
+
+    <h2 class="section-title" style="margin-bottom: 30px;">היי, קוראים לי <span class="highlight">ג׳קו גולדברג</span></h2>
+
+    <div class="author-photo-wrap">
+      <img src="https://cdn.jsdelivr.net/gh/jakog-hub/marketing-assets@main/shomrei-haadama-landing/images/jako.jpg" alt="ג'קו גולדברג">
+    </div>
+
+    <div class="mini-author-text">
+      <p style="margin-bottom: 12px;">אחרי שעזבתי את עולם המדע וההיי-טק</p>
+      <p style="margin-bottom: 12px;">אחרי שלמדתי מהשמאנים הגדולים בעולם</p>
+      <p style="margin-bottom: 12px;">ועזרתי ל-<strong style="color: var(--accent-terra); font-size: 1.15em;">17,583 אנשים</strong></p>
+      <p>העברתי סדנאות תקשור וריפוי בארץ ובעולם:</p>
+    </div>
+
+    <div class="social-proof-collage" style="margin-top: 50px;">
+      <img src="https://cdn.jsdelivr.net/gh/jakog-hub/marketing-assets@main/shomrei-haadama-landing/images/collage.jpg" alt="קולאז' תמונות מהסדנאות עם ג'קו גולדברג">
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 6: ROOT PROBLEM -->
+<!-- ============================= -->
+<section class="section-tight" style="background: var(--bg-primary); text-align: center;">
+  <div class="container-narrow reveal">
+    <p class="flowing-text" style="margin-bottom: 30px;">
+      ואחרי שעזרתי לכל כך הרבה אנשים להתחבר לקול הפנימי, האינטואיציה ולהדרכה הרוחנית האישית שלהם בעזרת שיטה שמאנית ייחודית,
+    </p>
+    <div class="huge-text" style="margin-top: 30px;">
+      גיליתי שהבעיה האמיתית היא <span class="accent">הרבה יותר עמוקה...</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 7+8: PAIN DEEPENING -->
+<!-- ============================= -->
+<section class="section pain-deepening">
+  <div class="ambient-glow gold"></div>
+
+  <div class="container-narrow reveal">
+    <h2>שורש הבעיה - <strong>הרעש הפנימי</strong></h2>
+
+    <div class="flowing-text">
+      <p>העולם המודרני מלא בגירויים אינסופיים שיוצרים הסחת דעת והרבה רעש.</p>
+      <p>הרעש העיקרי הוא <strong>לא הרעש מבחוץ</strong>, כמו אנשים, מכוניות וכו׳</p>
+      <p>אלה <strong>הרעש הפנימי</strong> - עודף מחשבות, עודף רגשות ואפילו הצפה, שכל זה יוצר אנרגיה לא מאוזנת בגוף ובתודעה שלך.</p>
+      <p>בגלל כל הרעש הזה אתה לא מצליח להבין מה הגוף שלך אומר ומה האינטואיציה לוחשת לך באוזן.</p>
+      <p style="margin-top: 30px;"><strong style="font-size: 1.15em;">ואני בטוח שאתה מאוד רוצה להקשיב לנשמה שלך.</strong></p>
+    </div>
+
+    <div style="margin-top: 50px; padding-top: 40px; border-top: 1px solid rgba(232, 196, 122, 0.2);">
+      <h2 style="margin-bottom: 25px;">אבל שים לב!</h2>
+      <p style="font-size: clamp(20px, 2.6vw, 28px); font-weight: 700; color: var(--accent-gold-light); margin-bottom: 30px;">
+        הקולות האלה מדברים אליך תמיד! תמיד ובכל מצב!
+      </p>
+      <div class="flowing-text">
+        <p>אולי אפילו שמעת הרבה פעמים, אבל לא הקשבת או שזה היה נשמע כמו סינית ולא באמת הבנת.</p>
+        <p>ואז מה עשית? הלכת בדרך הגרועה והתחלת לקבל הכוונה <strong>מאחרים או אפילו מ-AI</strong> כדי שהם יעזרו לך להבין את הדרך הנכונה.</p>
+        <p style="margin-top: 25px; font-size: 1.1em;"><strong style="color: var(--accent-gold-light);">עצוב מאוד שזה מה שקורה לרוב האנשים היום!</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 9: SOLUTION INTRO -->
+<!-- ============================= -->
+<section class="section solution-intro">
+  <div class="container reveal">
+    <div style="text-align: center;">
+      <span class="section-eyebrow">הפתרון</span>
+    </div>
+
+    <h2 class="section-title">
+      אז מה הפתרון שכבר עזר למעל <span class="highlight">17,583 אנשים</span><br>
+      להתחבר עמוק לעצמם, לנשמה ולקול הפנימי המדויק
+    </h2>
+
+    <p class="section-subtitle">
+      כדי לממש את הפוטנציאל הכי גדול שלהם ולהגשים את עצמם בחיים שהם רוצים?
+    </p>
+
+    <div style="text-align: center;">
+      <div class="solution-name-box">
+        <h2>תכיר השיטה השמאנית</h2>
+        <p>שיטת האדמה</p>
+      </div>
+    </div>
+
+    <p style="text-align: center; font-size: clamp(17px, 2.2vw, 21px); color: var(--text-secondary); max-width: 700px; margin: 30px auto 0; line-height: 1.6;">
+      חיבור לכוחות ואיתני טבע נסתרים שקיימים בכל אחד ואחת מאיתנו
+    </p>
+
+    <div class="solution-promises">
+      <p>השיטה הזו תגלה לך איך <strong>להשקיט את הרעש בראש</strong>,</p>
+      <p>לפתוח <strong>ערוץ ישיר לאינטואיציה</strong> שלך,</p>
+      <p>ולהפוך אותה ל<strong>מצפן פנימי ורוחני</strong> שנותן לך תשובות מדויקות</p>
+      <p>לכל התלבטויות בחיים</p>
+      <p style="color: var(--accent-terra); margin-top: 30px;">ואפילו לתקשר עם נשמה מלווה שלך</p>
+      <p>עם מסר אישי מיוחד.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 10: PRODUCT REVEAL -->
+<!-- ============================= -->
+<section class="section product-reveal">
+  <div class="ambient-glow gold" style="width: 600px; height: 600px; top: 30%; right: -100px; opacity: 0.4;"></div>
+
+  <div class="container reveal">
+    <p style="font-size: clamp(17px, 2vw, 20px); color: var(--text-secondary); margin-bottom: 30px;">
+      ועכשיו? אני רוצה לגלות לך את סדנת העומק האינטרנטית שפתחתי -
+    </p>
+
+    <h2 class="product-name">סודות התקשור<br>והאנרגיה של שמאנים</h2>
+
+    <div class="product-mockup">
+      <img src="https://cdn.jsdelivr.net/gh/jakog-hub/marketing-assets@main/shomrei-haadama-landing/images/mockup.jpg" alt="סודות התקשור והאנרגיה של שמאנים - תצוגה מוקדמת">
+    </div>
+
+    <p class="product-subtitle">
+      סדנא אינטרנטית של <strong>4 מפגשי live</strong> שתחבר אותך לכוחות העולם הנסתר ולאנרגיה המאוזנת והבריאה שלך
+    </p>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTIONS 11-15: MEETINGS -->
+<!-- ============================= -->
+<section class="section meetings-section">
+  <div class="container">
+    <div class="meetings-header reveal">
+      <span class="section-eyebrow">תוכן הסדנא</span>
+      <h2 class="section-title">מה מחכה לך בסדנה?</h2>
+    </div>
+
+    <!-- MEETING 1 -->
+    <div class="meeting-card reveal">
+      <div class="meeting-header">
+        <span class="meeting-fire">🔥</span>
+        <div>
+          <div class="meeting-number">מפגש 1 | הערוץ הישיר</div>
+          <div class="meeting-title">חיבור לאינטואיציה ולהדרכה הרוחנית שלך - תוך 10 דק׳ בלבד</div>
+        </div>
+      </div>
+
+      <div class="meeting-content">
+        <p>כאן נצא ביחד <strong>למסע שמאני מיוחד</strong>, בו תגלה:</p>
+
+        <ul class="bullet-list">
+          <li>איך <strong>לדבר עם האינטואיציה</strong> עם תשובות ברורות</li>
+          <li>איך <strong>לתקשר עם עולם הנסתר</strong> כדי להתחבר להדרכה הרוחנית שלך</li>
+          <li>איך לקבל <strong>מסר אישי מדויק</strong> - בכל פעם שאתה צריך</li>
+          <li>נלמד <strong>להתחבר לכוחות האדמה ולאלמנט הנקבי</strong> - השפע</li>
+        </ul>
+
+        <p><strong>כאן אגלה לך דרך לפנות להדרכה הרוחנית האישית שלך - בכל רגע שאתה צריך.</strong></p>
+
+        <p>אתה תבין שיש לזה:</p>
+
+        <ul class="bullet-list">
+          <li><strong>צורה, צבע, ואפילו שם</strong></li>
+          <li><strong>וכתובת ברורה</strong> לאן לפנות - <strong>תמיד!</strong></li>
+        </ul>
+
+        <p>כדי לקבל את ההכוונה והתשובה הכי נכונה לך - <strong>בכל החלטה שתעשה בחיים שלך.</strong></p>
+
+        <div class="shine-line">כך תדע תמיד להיות בוודאות שאתה בדרך הנכונה!</div>
+
+        <p><strong>ומה אתה משאיר מאחור?</strong></p>
+
+        <ul class="bullet-list x-list">
+          <li><strong>בלי</strong> מאמצים מיותרים של חשיבה וניתוח יתר (Analysis Paralysis)</li>
+          <li><strong>בלי</strong> לבזבז אנרגיה רגשית יקרה של בלבול וחרטה</li>
+          <li><strong>בלי</strong> להגיע לשיתוק בקבלת החלטות פשוטות</li>
+        </ul>
+
+        <ul class="bullet-list checkmark-list">
+          <li><strong>להיות רק בזרימה הטבעית שלך</strong></li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>⚡ אבל זהירות - יש לזה תופעות לוואי:</strong>
+          עם יכולות-על כאלה, אתה הופך לסמכות גדולה בקרב כל החברים שלך - שיעריצו אותך ויבואו להתייעץ איתך לקבל הכוונה לדרך הנכונה.
+        </div>
+
+        <div class="date-tag">📅 תאריך ושעה: יוכנס בקרוב</div>
+      </div>
+    </div>
+
+    <!-- MEETING 2 -->
+    <div class="meeting-card reveal">
+      <div class="meeting-header">
+        <span class="meeting-fire">🔥</span>
+        <div>
+          <div class="meeting-number">מפגש 2 | פיענוח המסרים</div>
+          <div class="meeting-title">מה היקום אומר לי - ואיך לפרש מסרים נסתרים?</div>
+        </div>
+      </div>
+
+      <div class="meeting-content">
+        <p><strong>בטח כבר שאלת את עצמך:</strong></p>
+
+        <ul class="bullet-list qmark-list">
+          <li><em>"מה היקום מנסה להגיד לי?"</em></li>
+          <li><em>"מה המשמעות של כל המסרים שמגיעים אלי?"</em></li>
+          <li><em>"איך אני יודע אם זה באמת מסר - או שאני סתם מדמיין?"</em></li>
+        </ul>
+
+        <p><strong>והגיע הזמן שתכיר סוף סוף את התשובות:</strong></p>
+
+        <ul class="bullet-list">
+          <li>איך <strong>לפרש את המסרים הנסתרים</strong> שהיקום שולח לך</li>
+          <li>איך להבין את <strong>המשמעות העמוקה</strong> שהאינטואיציה לוחשת לך באוזן</li>
+          <li>איך להבדיל בין <strong>מסר אמיתי</strong> לבין רעש פנימי</li>
+        </ul>
+
+        <p><strong>וזה לא הכל...</strong></p>
+
+        <p>תגלה איך בעזרת <strong>כוחות ואיתני הטבע הגדולים</strong> -</p>
+
+        <ul class="bullet-list">
+          <li><strong>להתחבר לעוצמה הגדולה</strong> שלך</li>
+          <li><strong>ולגעת ברגישות העדינה</strong> שלך</li>
+          <li><strong>ולאפשר לכוח הנסתר</strong> להוביל אותך להצלחה בכל מעשיך</li>
+        </ul>
+
+        <div class="shine-line">פתאום הכל מקבל משמעות ושום דבר לא מקרי.</div>
+
+        <div class="date-tag">📅 תאריך ושעה: יוכנס בקרוב</div>
+      </div>
+    </div>
+
+    <!-- MEETING 3 -->
+    <div class="meeting-card reveal">
+      <div class="meeting-header">
+        <span class="meeting-fire">🔥</span>
+        <div>
+          <div class="meeting-number">מפגש 3 | מצפן הנשמה</div>
+          <div class="meeting-title">איך לגלות את מסע הנשמה שלך בחיים האלה</div>
+          <div class="meeting-subtitle">בלי מדיטציות ארוכות ובלי לחפש את עצמך שנים רבות</div>
+        </div>
+      </div>
+
+      <div class="meeting-content">
+        <div class="warning-box" style="background: linear-gradient(135deg, #fdf9f6, #f5e8de); border-right-color: var(--accent-gold);">
+          <strong>⚡ תחזיק חזק - השיעור הזה הולך לשנות לך את החיים!</strong>
+        </div>
+
+        <p><strong>כאן אגלה לך איך ב-10 דקות בלבד אפשר:</strong></p>
+
+        <ul class="bullet-list">
+          <li><strong>להתחבר לנשמה המלווה שלך</strong> ולקבל ממנה מסר אישי מיוחד</li>
+          <li><strong>לתקשר עם נשמות, כוחות השמיים, מלאכים ואלמנט הזכרי</strong> - האור הגדול</li>
+          <li>לקבל <strong>תשובות חד-משמעיות</strong> לשאלות הכי גדולות בחיים שלך</li>
+        </ul>
+
+        <p><em>(כן, כן - לתקשר עם נשמות. זה לא בדיוני - זה מציאותי, מעשי ופשוט.)</em></p>
+
+        <p><strong>ויותר מזה...</strong></p>
+
+        <p><strong>הדרך לגלות את נתיב החיים שלך</strong> -</p>
+
+        <p style="text-align: center; font-size: 1.2em; color: var(--accent-terra); font-weight: 700; margin: 20px 0;"><em>לפעמים קוראים לזה: ייעוד.</em></p>
+
+        <p><strong>וכך תמיד תדע:</strong></p>
+
+        <ul class="bullet-list">
+          <li><strong>להיות בטוח בבחירות הגדולות</strong> של החיים שלך</li>
+          <li><strong>לדעת את הכיוון הנכון</strong> בכל צומת</li>
+          <li>לקבל <strong>הכוונה צלולה</strong> בכל עשייה - בפרויקטים גדולים ובאנשים שאתה פוגש בדרך</li>
+        </ul>
+
+        <div class="shine-line">תמיד לדעת שאתה בדרך הנכונה. ורק זה - שווה זהב.</div>
+
+        <div class="date-tag">📅 תאריך ושעה: יוכנס בקרוב</div>
+      </div>
+    </div>
+
+    <!-- MEETING 4 -->
+    <div class="meeting-card reveal" style="border: 2px solid var(--accent-gold); box-shadow: 0 20px 50px var(--shadow-medium), 0 0 30px var(--shadow-gold);">
+      <div class="meeting-header">
+        <span class="meeting-fire">🔥</span>
+        <div>
+          <div class="meeting-number">מפגש 4 | שיטת האדמה - המפגש שמחבר הכל</div>
+          <div class="meeting-title">זרימת אנרגיה חופשית: איך הופכים את כל מה שלמדת - לדרך חיים יומיומית</div>
+        </div>
+      </div>
+
+      <div class="meeting-content">
+        <p style="font-size: 1.15em; font-weight: 700; color: var(--accent-terra);">🎯 תקשיב לי טוב.</p>
+
+        <p><em>כאן מגיע השלב הקריטי ביותר:</em></p>
+
+        <p style="font-size: 1.15em; font-weight: 800; color: var(--text-primary);">לקחת את הכל ולהפוך אותו לדרך חיים.</p>
+
+        <div class="warning-box">
+          <strong>⚠️ כי הנה האמת שאף אחד לא מדבר עליה:</strong>
+          רוב האנשים שלמדו טכניקות רוחניות - חוזרים לאחר שבועיים בדיוק לאותה תקיעות. למה? כי <strong>חסר להם החיבור הסופי לפרקטיקה פשוטה של יום יום.</strong>
+        </div>
+
+        <p style="font-size: 1.1em; font-weight: 700; color: var(--accent-terra); text-align: center; margin: 30px 0;">🌍 זאת בדיוק הסיבה שיצרתי את "שיטת האדמה".</p>
+
+        <h3 style="font-size: 1.3em; color: var(--text-primary); margin: 30px 0 20px; font-weight: 800;">💎 במפגש 4 - אגלה לך:</h3>
+
+        <p><strong>✦ איך להיות מאוזן ולשמור על נפש בריאה, שקטה ויציבה לאורך זמן</strong></p>
+        <ul style="margin-right: 20px; list-style: disc; color: var(--text-secondary); font-size: 16px; line-height: 1.7;">
+          <li>לפתוח חסימות וכל מה שתוקע אותך בחיים</li>
+          <li>לשחרר לחץ, סטרס ותקיעות של שנים</li>
+          <li>לאפשר לשפע, לעשייה והזדמנויות מטורפות לזרום אליך בחזרה</li>
+        </ul>
+
+        <p style="margin-top: 24px;"><strong>✦ איך לנקות השפעות חיצוניות של תדר החושך והפחד, אנרגיה שלילית וסביבה לא בריאה</strong></p>
+        <ul style="margin-right: 20px; list-style: disc; color: var(--text-secondary); font-size: 16px; line-height: 1.7;">
+          <li>לחזור לשלמות עם עצמך ולשקט פנימי</li>
+          <li>להפוך להיות חסין מול אנשים רעילים וסטרס יומיומי</li>
+          <li>להחזיר לעצמך את האנרגיה, מצב הרוח והשליטה המלאה על החיים</li>
+        </ul>
+
+        <p style="margin-top: 16px;"><em>ואפילו אגלה לך כמה סודות של ריפוי עצמי</em></p>
+
+        <p style="margin-top: 24px;"><strong>✦ איך לשמר את החיבור לטווח ארוך</strong></p>
+        <p style="font-style: italic; color: var(--text-muted);">לא לשבועיים, לא לחודש - לכל החיים.</p>
+
+        <div class="shine-line" style="margin-top: 30px;">
+          (בלי לנתק את הטלפון, בלי להתנתק מהמציאות ובלי לברוח להודו.)
+        </div>
+
+        <div style="background: linear-gradient(135deg, #fdf9f6, #f5e8de); padding: 30px; border-radius: 16px; margin-top: 30px; text-align: center; border: 2px solid var(--border-gold);">
+          <p style="font-size: clamp(18px, 2.4vw, 22px); margin-bottom: 14px;">😏 <strong>והרגע הגדול ביותר?</strong></p>
+          <p style="font-size: clamp(28px, 4vw, 38px); font-weight: 900; color: var(--accent-terra); margin: 20px 0;"><em>"איך ידעת?"</em></p>
+          <p style="color: var(--text-secondary); line-height: 1.7;">זאת השאלה שתשמע מהחברים, מבני המשפחה, ואפילו מאנשים זרים. הם יראו את <strong>השלווה שלך, את הביטחון, את ההחלטות המדויקות</strong> - וירצו לדעת מה הסוד.</p>
+          <p style="margin-top: 14px; color: var(--text-muted); font-style: italic;">(ואתה תחייך לעצמך - כי תדע בדיוק איך.)</p>
+        </div>
+
+        <p style="text-align: center; font-weight: 800; font-size: clamp(18px, 2.4vw, 22px); margin: 30px 0 10px; color: var(--text-primary);">
+          🎯 זה השיעור שבו אתה לומד את הסיסטם הפשוט לחיות את החיים שתמיד רצית.
+        </p>
+
+        <div class="shine-line" style="background: var(--gradient-warm); border-color: var(--accent-terra);">
+          💎 וסוף סוף - השקט חוזר לראש. השמחה והביטחון חוזרים ללב.
+        </div>
+
+        <div class="date-tag">📅 תאריך ושעה: יוכנס בקרוב</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 16: TESTIMONIALS WITH PHOTOS -->
+<!-- ============================= -->
+<section class="section testimonials-photos">
+  <div class="container">
+    <div class="testimonials-photos-header reveal">
+      <span class="section-eyebrow">תוצאות אמיתיות</span>
+      <h2 class="section-title">6 פנים אמיתיות מתוך <span class="highlight">17,583 התלמידים</span></h2>
+      <p class="section-subtitle">התוצאות מדברות בעד עצמן</p>
+    </div>
+
+    <div class="testimonials-photos-grid reveal-stagger">
+      <div class="testimonial-card">
+        <img src="https://cdn.jsdelivr.net/gh/jakog-hub/marketing-assets@main/shomrei-haadama-landing/testimonial-photos/galit-peres.jpg" alt="גלית פרס" class="testimonial-photo" style="object-position: center center;">
+        <h3 class="testimonial-title">"אני יכולה להגיד שהחיים שלי השתנו"</h3>
+        <p class="testimonial-quote">"גיליתי עוצמות בתוכי, והתחלתי לסמוך על עצמי ועל האינטואיציות שלי, הבטחון העצמי שלי גדל, יכולות הריפוי שלי התעצמו. ממליצה בחום מכל הלב!"</p>
+        <div class="testimonial-name">— גלית פרס</div>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="https://cdn.jsdelivr.net/gh/jakog-hub/marketing-assets@main/shomrei-haadama-landing/testimonial-photos/naama-goldenberg.jpg" alt="נעמה גולדנברג" class="testimonial-photo" style="object-position: center center;">
+        <h3 class="testimonial-title">"יצאתי לדרך חדשה בחיים"</h3>
+        <p class="testimonial-quote">"המלחמות הפנימיות הפסיקו אצלי וחזרתי למסלול הטוב בחיים שלי. נהייתי מאוד מקורקעת, מתנהלת יותר טוב. נפתח לי השפע עם הרבה עבודה ולקוחות. המון תודה!"</p>
+        <div class="testimonial-name">— נעמה גולדנברג</div>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="https://cdn.jsdelivr.net/gh/jakog-hub/marketing-assets@main/shomrei-haadama-landing/testimonial-photos/oren-bach.jpg" alt="אורן באך" class="testimonial-photo" style="object-position: center center;">
+        <h3 class="testimonial-title">"גיליתי ששמאניזם מאוד עכשווי"</h3>
+        <p class="testimonial-quote">"בעקבות הקורס רמת האושר שלי עולה. התגברו אצלי עוצמות האנרגיה, תחושת חופש, פתיחות, ואושר אישי. הופתעתי שזה לא בדיוק מה שחשבתי - אלה טוב יותר!"</p>
+        <div class="testimonial-name">— אורן באך 👨</div>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="https://cdn.jsdelivr.net/gh/jakog-hub/marketing-assets@main/shomrei-haadama-landing/testimonial-photos/marni-haro.jpg" alt="מרני הרו" class="testimonial-photo" style="object-position: 30% center;">
+        <h3 class="testimonial-title">"זה החזיר לי כוח לעצמי בחזרה"</h3>
+        <p class="testimonial-quote">"בעקבות הלימוד אני מרגישה יותר רגועה ושלמה עם עצמי, אוהבת את עצמי יותר ובשליטה על החיים שלי. זה החזיר לי כוח לעצמי בחזרה ואני מרגישה יותר מאושרת!"</p>
+        <div class="testimonial-name">— מרני הרו</div>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="https://cdn.jsdelivr.net/gh/jakog-hub/marketing-assets@main/shomrei-haadama-landing/testimonial-photos/kati-nov.jpg" alt="קטי נוב" class="testimonial-photo" style="object-position: center center;">
+        <h3 class="testimonial-title">"זה עזר לי לראות את האמת הפנימית"</h3>
+        <p class="testimonial-quote">"אחת הסיבות שאני מאד נהנית ללמוד ממך - שאתה מאוד מחובר למציאות ומאוד אמיתי. כל טכניקה וכל גישה שלימדת ניתנת להבנה ומבוססת הגיון. זה עזר לי לראות את האמת הפנימית ולקבל אותה באהבה."</p>
+        <div class="testimonial-name">— קטי נוב</div>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="https://cdn.jsdelivr.net/gh/jakog-hub/marketing-assets@main/shomrei-haadama-landing/testimonial-photos/lior-schwartz.jpg" alt="ליאור שוורץ" class="testimonial-photo" style="object-position: center 35%;">
+        <h3 class="testimonial-title">"שינה את החיים שלי ומילא בקסם ייחודי"</h3>
+        <p class="testimonial-quote">"זה שחרר אותי מהרגלים כואבים והרבה ערפל שהיה בחיי. זה פתח בפני עולם חדש, שינה את החיים שלי ומילא בקסם ייחודי. תודה!"</p>
+        <div class="testimonial-name">— ליאור שוורץ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 17: PRICING EMOTIONAL -->
+<!-- ============================= -->
+<section class="section pricing-emotional">
+  <div class="ambient-glow gold"></div>
+
+  <div class="container-narrow reveal">
+    <h2>👀 מהו מחיר השתיקה של הקול הפנימי?</h2>
+
+    <p style="font-size: clamp(17px, 2.2vw, 21px); color: rgba(245, 230, 211, 0.85); margin-bottom: 30px;">
+      תחשוב על זה רגע - כמה כבר שילמת על:
+    </p>
+
+    <ul class="bullet-list">
+      <li><strong>מערכת יחסים</strong> שגרמה לך לבכות מלא למרות כל הנורות האדומות שלא ראית</li>
+      <li><strong>עבודה</strong> שאתה קם אליה בבוקר עם כובד על החזה</li>
+      <li><strong>הזדמנות</strong> שפספסת כי "פחדת" או לא הקשבת להדרכה הפנימית</li>
+      <li><strong>לילות שלמים</strong> שלא ישנת - מלאי חרדה ותסכול</li>
+    </ul>
+
+    <p style="margin-top: 50px; font-size: clamp(18px, 2.4vw, 24px); color: rgba(245, 230, 211, 0.7); font-style: italic; position: relative; z-index: 1;">
+      המחיר האמיתי של ניתוק מהאינטואיציה -
+    </p>
+    <div class="real-price-text">
+      זה חיים שלמים שעוברים לידך.
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 18: PRICE + CTA #1 -->
+<!-- ============================= -->
+<section class="section price-section" id="register-1">
+  <div class="container reveal">
+    <div class="price-box">
+      <p class="price-question">אז מה ההשקעה שלך היום?</p>
+      <div class="price-huge"><span class="currency">₪</span>147</div>
+      <p class="price-detail">בלבד • ל-4 מפגשי live</p>
+
+      <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-gold);">
+        <p style="font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; color: var(--text-primary); margin-bottom: 20px;">
+          ⚡ אז עכשיו...
+        </p>
+
+        <ul class="bullet-list steps-list">
+          <li>אתה <strong>ממלא פרטים</strong> כאן 👇</li>
+          <li>לוחץ על הכפתור</li>
+          <li><strong>מאשר תשלום</strong> בדף מאובטח 🔒</li>
+          <li>ומשריין לעצמך מקום בסדנא הזו</li>
+        </ul>
+
+        <div class="steps-promise">ותוך 27 שניות - תקבל ממני הוראות התחברות.</div>
+
+        <div class="form-wrapper">
+          <script type='text/javascript' src='//form2.ravpage.co.il/8a4e7f75446e49b6c23d934f365dc0606A1C54D8' charset='UTF-8'></script>
+        </div>
+
+        <p class="guarantee-note" style="margin-top: 20px;">(אחריות מלאה ל-30 יום - על כל הסדנא. בלי אותיות קטנות.)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 19: GUARANTEE -->
+<!-- ============================= -->
+<section class="section guarantee-section">
+  <div class="container reveal">
+    <div style="text-align: center;">
+      <div class="guarantee-shield">🛡️</div>
+      <h2 class="section-title">האחריות שאני נותן לך</h2>
+    </div>
+
+    <div class="guarantee-box">
+      <p class="guarantee-quote">
+        😏 <strong>כבר פגשתי הרבה סקפטיים, שכלתניים, לא מאמינים, מכחישים, מרימי גבה ואחרים.</strong>
+      </p>
+      <p class="guarantee-quote" style="text-align: center;">
+        אני מאוד מבין אותם.
+      </p>
+      <p class="guarantee-quote" style="text-align: center;">
+        <strong>כי גם אני - באתי משם.</strong>
+      </p>
+
+      <div class="guarantee-punch">
+        ⚡ אבל בסוף... <br>
+        לכולם נופלת הלסת.
+      </div>
+
+      <p class="guarantee-quote" style="margin-top: 30px;">
+        ❓ <strong>ואם לך זה לא קרה?</strong>
+      </p>
+      <p class="guarantee-quote">
+        אחרי שהשתתפת בכל <strong>4 השיעורים</strong> איתי... ולא למדת ממני ערך מספיק טוב... ואתה לא מרוצה ממה שקיבלת ממני...
+      </p>
+      <p class="guarantee-quote" style="text-align: center; font-size: 1.15em; color: var(--text-primary);">
+        <strong>פשוט תכתוב לי - ותקבל החזר כספי מלא.</strong>
+      </p>
+      <p style="text-align: center; color: var(--text-muted); font-style: italic;">פשוט ככה. בלי אותיות קטנות.</p>
+
+      <div class="guarantee-final">
+        <p>🛡️ וזו האחריות המלאה שלי אליך:</p>
+        <span class="big-number">קח לך 30 יום - באהבה ❤️</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 60px;">
+      <p style="font-size: clamp(18px, 2.4vw, 22px); color: var(--text-secondary); margin-bottom: 15px;">
+        👀 אחרי שעזרתי ל-<strong style="color: var(--accent-terra);">17,583 אנשים</strong>
+      </p>
+      <p style="font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: var(--text-primary); margin-bottom: 15px;">
+        אני יכול להגיד לך בוודאות:
+      </p>
+      <p style="font-size: clamp(40px, 6vw, 60px); font-weight: 900; color: var(--accent-terra); line-height: 1;">
+        זה עובד. 🔥
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 20: AUTHORITY FULL -->
+<!-- ============================= -->
+<section class="section authority-section">
+  <div class="ambient-glow gold"></div>
+
+  <div class="container reveal">
+    <div class="authority-intro">
+      <p>👀 <strong>אבל זה עוד לא הכל...</strong></p>
+      <p style="margin-top: 12px; font-style: italic;">לפני שאתה נכנס פנימה - אני רוצה שתכיר אותי קצת יותר.</p>
+    </div>
+
+    <div class="authority-name-block">
+      <p style="font-size: clamp(18px, 2vw, 22px); color: var(--text-muted); margin-bottom: 12px;">"הי, שמי</p>
+      <h2 class="authority-name">ג'קו גולדברג"</h2>
+      <p class="authority-title">🌍 מורה דרך לתרגול שמאני ומגשר בין העולמות</p>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="authority-block">
+      <h3>🚪 לפני 17 שנים - עזבתי קריירה מצליחה בהייטק.</h3>
+      <p>לטובת שליחות. עזרה לאחרים. <strong>שירות לאנושות.</strong></p>
+      <p><em>(לא החלטה קלה. אבל החלטה שלמה.)</em></p>
+    </div>
+
+    <div class="authority-block">
+      <h3>🧬 המיומנות שפיתחתי - היא הסיבה שרוב האנשים מגיעים אליי:</h3>
+      <p>בעקבות הניסיון בעולם המדע - פיתחתי מיומנות:</p>
+      <ul class="bullet-list">
+        <li>ליצור <strong>חיבור הרמוני ומאוזן</strong> בין מדע לרוחניות</li>
+        <li>בין <strong>חומר לרוח</strong></li>
+        <li>לממש את זה בחיים שלנו - <strong>בצורה פרקטית מקורקעת ביותר</strong></li>
+      </ul>
+      <div class="authority-emphasis">זו הסיבה שרוב האנשים מגיעים אליי.</div>
+    </div>
+
+    <div class="authority-block">
+      <h3>🔥 המורים שלי - מהגדולים בעולם:</h3>
+      <p>לאחר שנים של לימוד אצל <strong>מורים מרפאים גדולים ומוערכים בעולם</strong> בינהם <strong>שמאן מצפון אמריקה</strong> ו<strong>סבתא שמאנית מסיביר</strong>, אספתי את הידע הכי טוב בתחום עם <strong>פרקטיקה ייחודית</strong> ופיתחתי את <strong>שיטת "אדמה"</strong> שאפשר ללמוד רק אצלנו.</p>
+    </div>
+
+    <div class="authority-block">
+      <h3>🏛️ היום - אני מוביל את התחום בישראל:</h3>
+      <p>מייסד <strong>אקדמיה שמאנית</strong> וקהילת <strong>"שומרי האדמה"</strong> - שהולכת וגדלה, <strong>מכשיר מטפלים ומרפאים מובילים בישראל</strong> ומוביל <strong>מסעות מרתקים ומדיטטיביים בעולם</strong> - ממרכז אמריקה, אירופה ועד למעמקי ערבות סיביר.</p>
+      <div class="authority-emphasis" style="margin-top: 30px;">
+        אני מרגיש זכות גדולה לעזור ל-17,583 אנשים<br>
+        ליצור חיים חדשים של תקווה - בדרך להתפתחות אישית ורוחנית.
+      </div>
+      <p style="text-align: center; font-size: clamp(22px, 3vw, 30px); font-weight: 900; color: var(--text-primary); margin-top: 20px;">ואני כאן כדי לעזור גם לך.</p>
+    </div>
+
+    <div class="authority-block" style="background: linear-gradient(135deg, #fdf9f6, #f5e8de); border: 2px solid var(--accent-gold);">
+      <h3 style="text-align: center;">✨ למה דווקא עכשיו?</h3>
+      <p>בעולם החדש שאליו נכנסנו -</p>
+      <p style="font-size: 1.15em; font-weight: 700; color: var(--text-primary);">ידע זה בא להזכיר לנו מי אנחנו באמת. ולמה באנו לכאן.</p>
+      <p>הלימוד מזמין אותנו להתחבר למהות האמיתית שלנו, להצית מחדש את התשוקה ובריאות חזקה, אנרגיה טובה ושקט פנימי.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 21: TESTIMONIALS NO PHOTOS -->
+<!-- ============================= -->
+<section class="section testimonials-text-section">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 50px;">
+      <h2 class="section-title">משתתפים <span class="highlight">מספרים</span></h2>
+    </div>
+
+    <div class="testimonials-text-grid reveal-stagger">
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"סוף סוף הגוף שלי משתחרר ממחסומים ופחדים."</p><div class="testimonial-text-author">— ליאת א.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"תודה! קיבלתי תשובה של שנים שלא ידעתי, הרגשתי את המסר על הגוף שלי."</p><div class="testimonial-text-author">— דניאל מ. 👨</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"את לא צריכה להילחם יותר, הכל מגיע אלייך."</p><div class="testimonial-text-author">— חלי ב.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"המדריך שלי נתן לי אומץ להיות אני, להסכים לקבל את מי שאני ואת הרגשות שלי, במקום להיות במנגנון הטיפוס המרצה."</p><div class="testimonial-text-author">— רויטל ט.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"פגשתי את אבא שנפטר לפני 20 שנה ועוד משפחה שנפטרו... ובכיתי מהתרגשות שפגשתי אותם, ואמרו לי שאנחנו שומרים עליך."</p><div class="testimonial-text-author">— מור א.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"די עם החיים הבינוניים עם בן הזוג שלי שתוקע אותי. ההדרכה אמרה לי לא לפחד ולהתעורר כדי לחיות את החיים שאני רוצה לחיות."</p><div class="testimonial-text-author">— רעות ח.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"המסר שהדרכה העבירה לי הוא להתחבר ללביאה שבי. שעד עכשיו צמצמתי את עצמי לחתולה והגיע הזמן להתחבר לעוצמות יותר גבוהות."</p><div class="testimonial-text-author">— מרינה ק.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"קיבלתי מסר על שקט. עוצמת הנוכחות היה מרפא ממש."</p><div class="testimonial-text-author">— כרמית ב.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"הדרכה רוחנית שלי מגנה עליי ומראה לי את הדרך ומלמדת אותי לא לפחד."</p><div class="testimonial-text-author">— דפנה א.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"הבנתי שאני צריך להוציא לאור את החלקים הרכים שבי."</p><div class="testimonial-text-author">— יונתן א. 👨</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"הרגשתי שפע אהבה, בן זוגי בא לחבק אותי לתת לי ביטחון בבית."</p><div class="testimonial-text-author">— אלונה א.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"מסע מדהים! המדריך שלי ליווה אותי ושומר עלי, והייעוד שלי זה לדאוג לבן שלי לכוון אותו לדרך הנכונה."</p><div class="testimonial-text-author">— בתיה ק.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"דמעות של אושר זלגו מעיני, וואוו מרגש. פגשתי את נשמה של אבא שלי שעטף אותי באהבה, אמר לי לעוף בין הפרחים."</p><div class="testimonial-text-author">— דבורה ב.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"פגשתי נשמה מלווה אילן ברקיע מאוד גבוה. הוא לימד אותי איך ליצור איזון בין העולמות העליונים לגאיה."</p><div class="testimonial-text-author">— שרונה ב.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"הנשמה המלווה שלי אמרה שבאתי להפיץ אהבה בעולם."</p><div class="testimonial-text-author">— איילת א.</div></div>
+      <div class="testimonial-text-card"><p class="testimonial-text-quote">"הרגשתי חמימות מטורפת ומשהו שמחזיק לי את הראש. הרגשתי פשוט אושר."</p><div class="testimonial-text-author">— יאנה ר.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 22: PRICE + CTA #2 -->
+<!-- ============================= -->
+<section class="section price-section" id="register-2" style="background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-warm) 100%);">
+  <div class="container reveal">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span class="section-eyebrow">הזמנה אישית</span>
+      <h2 class="section-title">המקום שלך מחכה</h2>
+    </div>
+
+    <div class="price-box">
+      <p class="price-question">אז מה ההשקעה שלך היום?</p>
+      <div class="price-huge"><span class="currency">₪</span>147</div>
+      <p class="price-detail">בלבד • ל-4 מפגשי live</p>
+
+      <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-gold);">
+        <p style="font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; color: var(--text-primary); margin-bottom: 20px;">
+          ⚡ אז עכשיו...
+        </p>
+
+        <ul class="bullet-list steps-list">
+          <li>אתה <strong>ממלא פרטים</strong> כאן 👇</li>
+          <li>לוחץ על הכפתור</li>
+          <li><strong>מאשר תשלום</strong> בדף מאובטח 🔒</li>
+          <li>ומשריין לעצמך מקום בסדנא הזו</li>
+        </ul>
+
+        <div class="steps-promise">ותוך 27 שניות - תקבל ממני הוראות התחברות.</div>
+
+        <div class="form-wrapper">
+          <script type='text/javascript' src='//form2.ravpage.co.il/8a4e7f75446e49b6c23d934f365dc0606A1C54D8' charset='UTF-8'></script>
+        </div>
+
+        <p class="guarantee-note" style="margin-top: 20px;">(אחריות מלאה ל-30 יום - על כל הסדנא. בלי אותיות קטנות.)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- SECTION 23: FAQ -->
+<!-- ============================= -->
+<section class="section faq-section">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 50px;">
+      <span class="section-eyebrow">שאלות נפוצות</span>
+      <h2 class="section-title">השאלות שכולם שואלים</h2>
+    </div>
+
+    <div class="faq-list reveal-stagger">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span>
+          <span>האם זה מתאים למתחילים שלא מכירים את העולם הזה - או למתקדמים?</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p><strong>התשובה: מתאים לשניהם - וזה בדיוק הקסם של שיטת "אדמה".</strong></p>
+            <p><strong>אם אתה מתחיל מוחלט</strong> - לא צריך שום ידע מקדים. לא קראת ספרים? לא עשית מדיטציה אף פעם? <strong>מצוין.</strong> אני בונה הכל מהיסוד, בגובה העיניים, בלי מילים גדולות ובלי ז'רגון מסובך.</p>
+            <p><strong>אם אתה כבר מנוסה</strong> (מטפל/ת, מטפל אנרגטי, או תלמיד ותיק בעולמות הרוח) - <strong>תקבל כלים שמאניים פרקטיים שלא לימדו אותך באף קורס אחר.</strong> שיטת "אדמה" ייחודית - וגם המתקדמים מופתעים: <em>"איך לא הכרתי את זה קודם?"</em></p>
+            <p><strong>בקבוצות שלי יושבים יחד:</strong> עורכת דין בלי שום רקע + מטפלת מנוסה עם 10 שנות ותק. <strong>וכולם מקבלים בדיוק את מה שהם צריכים.</strong></p>
+            <p><em>הסוד? השיטה עוטפת אותך בדיוק במקום שאתה נמצא בו - ולוקחת אותך צעד אחד קדימה.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span>
+          <span>מה אם אני לא מצליח לתקשר עם הנשמה?</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>אני אגלה לך סוד: <strong>כל מי שמגיע בלב פתוח - יוצא עם חיבור פשוט ויציב.</strong> השיטה כל כך פרקטית ומקורקעת, שגם הסקפטיים הכי גדולים מופתעים כבר במפגש הראשון.</p>
+            <p>17,583 אנשים הוכיחו שזה עובד. <strong>עכשיו תורך.</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span>
+          <span>מה אם אפספס מפגש?</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>אין דאגה. <strong>כל המפגשים מוקלטים ונשארים אצלך לכל החיים.</strong></p>
+            <p>אפשר לצפות מתי שנוח לך - <strong>גם מהטלפון, מכל מקום בעולם.</strong></p>
+            <p>והכי חשוב - <strong>גם בקבוצת השבט בוואטסאפ נסכם כל מפגש</strong>, כך שתישאר בקצב.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span>
+          <span>ואם זה לא יעבוד עליי?</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>יש לך <strong>30 יום אחריות מלאה - על כל הסדנא.</strong></p>
+            <p>אם זה לא בשבילך - <strong>אני מחזיר לך את הכסף.</strong> בלי שאלות. בלי טפסים. בלי אותיות קטנות.</p>
+            <p>הסיכון כולו עליי - <strong>אתה לא לוקח שום סיכון כספי.</strong></p>
+            <p><em>(האמת? מנסיוני עם אלפי תלמידים - לכולם נופלת הלסת אחרי המפגש הראשון. אבל ההבטחה עומדת.)</em> ❤️</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span>
+          <span>אני כבר לומד אצל מורה אחר - זה יתאים?</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p><strong>בהחלט. זה משלים, לא מתחרה.</strong></p>
+            <p>הרבה מהתלמידים שלי לומדים במקביל אצל מורים נוספים - <strong>כל מורה מביא זווית ייחודית</strong> והשיטה השמאנית שאני מלמד מוסיפה שכבת עומק שאין במקום אחר.</p>
+            <p><strong>שיטת "אדמה" משתלבת עם כל גישה רוחנית</strong> - מדיטציה, יוגה, אנרגטיקה, NLP, טיפול רגשי. היא לא מבטלת - היא מעצימה.</p>
+            <p>ואם המורה הנוכחי שלך באמת טוב - <strong>הוא יעריך שאתה ממשיך להתפתח.</strong> זה הסימן של תלמיד אמיתי.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span>
+          <span>זה לא בסתירה לאמונה שלי / לדת?</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>ממש לא. <strong>השיטה אוניברסלית</strong> - מתאימה לכל אדם, מכל מסורת, בלי להתנגש באמונות.</p>
+            <p><strong>בין התלמידים שלי יש דתיים, חילונים, בודהיסטים, סקפטיים, אנשי מדע</strong> - וכולם מוצאים בזה ערך אישי עמוק.</p>
+            <p>השיטה לא דורשת ממך לוותר על שום דבר. <strong>רק להוסיף שכבה של חיבור פנימי שלא הכרת קודם.</strong></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="reveal" style="text-align: center; margin-top: 70px;">
+      <a href="#register-1" class="cta-button">🔥 אני בפנים! שריינו לי מקום ✋🏻</a>
+      <p class="guarantee-note" style="margin-top: 20px;">(אחריות מלאה ל-30 יום - על כל הסדנא. בלי אותיות קטנות.)</p>
+    </div>
+  </div>
+</section>
+
+<script>
+// Scroll reveal animations
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: '0px 0px -80px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+  observer.observe(el);
+});
+
+// FAQ Toggle
+function toggleFaq(button) {
+  const item = button.parentElement;
+  const wasOpen = item.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+  // Open clicked one if it wasn't open
+  if (!wasOpen) {
+    item.classList.add('open');
+  }
+}
+
+// Parallax for ambient glows
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const scrolled = window.pageYOffset;
+      document.querySelectorAll('.ambient-glow').forEach((glow, i) => {
+        const speed = 0.3 + (i % 3) * 0.1;
+        glow.style.transform = `translate3d(0, ${scrolled * speed}px, 0)`;
+      });
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+</script>
+
+</body>
+</html>
