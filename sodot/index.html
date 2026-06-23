@@ -3409,5 +3409,26 @@ window.addEventListener('scroll', () => {
 });
 </script>
 
+<!-- iframe auto-resize: reports page height to parent (Rav-Page / WordPress) to prevent double scrollbar -->
+<script>
+(function () {
+  if (window.parent === window) return; // not in an iframe
+  function sendHeight() {
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight
+    );
+    window.parent.postMessage({ ph_lp_height: h }, '*');
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  if (window.ResizeObserver) {
+    new ResizeObserver(sendHeight).observe(document.body);
+  } else {
+    setInterval(sendHeight, 1000);
+  }
+})();
+</script>
+
 </body>
 </html>
