@@ -3432,6 +3432,19 @@ window.addEventListener('scroll', () => {
   window.addEventListener('message', function (e) {
     if (e.data && e.data.ph_lp_ready) sendHeight();
   });
+  // Anchor links (e.g. the CTA button -> #register-1) can't scroll a non-scrolling
+  // iframe, so ask the parent window to scroll to the target's position instead.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    var target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    var top = target.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
+    window.parent.postMessage({ ph_lp_scrollTo: top }, '*');
+  });
   // Keep tracking content/height changes (lazy images, animations, fonts).
   if (window.ResizeObserver) {
     new ResizeObserver(sendHeight).observe(document.body);
