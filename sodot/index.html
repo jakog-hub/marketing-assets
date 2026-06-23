@@ -3420,13 +3420,24 @@ window.addEventListener('scroll', () => {
     );
     window.parent.postMessage({ ph_lp_height: h }, '*');
   }
+  // Send repeatedly during the first seconds so the parent receives the height
+  // even if its listener wasn't ready yet on a cold (first-visit, empty-cache) load.
+  document.addEventListener('DOMContentLoaded', sendHeight);
   window.addEventListener('load', sendHeight);
   window.addEventListener('resize', sendHeight);
+  [100, 300, 600, 1000, 1500, 2500, 4000].forEach(function (t) {
+    setTimeout(sendHeight, t);
+  });
+  // Respond to ready handshake from the parent (covers any missed message).
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.ph_lp_ready) sendHeight();
+  });
+  // Keep tracking content/height changes (lazy images, animations, fonts).
   if (window.ResizeObserver) {
     new ResizeObserver(sendHeight).observe(document.body);
-  } else {
-    setInterval(sendHeight, 1000);
   }
+  // Cheap safety net.
+  setInterval(sendHeight, 2000);
 })();
 </script>
 
